@@ -28,7 +28,7 @@ export default function BookingModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   // Prepare encoded WhatsApp message
-  const generatedMessage = `Hello Sailee,\n\nI would love to enquire about reserving a bespoke appointment at Nails by Sailee.\n\n• Name: ${formData.name || '[My Name]'}\n• Desired Service: ${formData.service}\n• Preferred Date: ${formData.date || '[Preferred Date]'}\n• Notes / Aesthetic Vision: ${formData.message || 'Natural nail health and bespoke design'}\n\nLooking forward to your consultation.`;
+  const generatedMessage = `Hello Gloss Atelier,\n\nI would love to enquire about reserving a bespoke appointment at Gloss Atelier.\n\n• Name: ${formData.name || '[My Name]'}\n• Desired Service: ${formData.service}\n• Preferred Date: ${formData.date || '[Preferred Date]'}\n• Notes / Aesthetic Vision: ${formData.message || 'Natural nail health and bespoke design'}\n\nLooking forward to your consultation.`;
 
   const handleCopyMessage = () => {
     navigator.clipboard.writeText(generatedMessage);

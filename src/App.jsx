@@ -70,7 +70,7 @@ export default function App() {
         {/* SECTION 06: The Artistry / Process */}
         <Artistry />
 
-        {/* SECTION 07: Meet Sailee */}
+        {/* SECTION 07: About Gloss Atelier */}
         <About onOpenBooking={() => setIsBookingOpen(true)} />
 
         {/* SECTION 08: Client Experiences */}

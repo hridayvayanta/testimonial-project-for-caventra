@@ -66,7 +66,7 @@ export default function Navbar({ onOpenBooking }) {
                 letterSpacing: '-0.01em',
               }}
             >
-              Nails by Sailee
+              Gloss Atelier
             </span>
             <span
               style={{

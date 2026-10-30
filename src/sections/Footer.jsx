@@ -44,7 +44,7 @@ export default function Footer({ onOpenBooking }) {
                 letterSpacing: '-0.02em',
               }}
             >
-              Nails by Sailee
+              Gloss Atelier
             </h3>
             <p className="text-body" style={{ color: 'var(--color-espresso-80)', lineHeight: 1.6 }}>
               {brand.studioTitle}. Dedicated to quiet luxury, structural nail architecture, and unhurried fine craftsmanship.
@@ -192,12 +192,12 @@ export default function Footer({ onOpenBooking }) {
           }}
         >
           <div>
-            © {brand.year} Nails by Sailee. Concept &amp; Production by CAVENTRA. All rights reserved.
+            © {brand.year} Gloss Atelier. Concept &amp; Production by CAVENTRA. All rights reserved.
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="concept-badge-dot" />
-            <span>Editorial Concept Preview • Ready for Production Onboarding</span>
+            <span>Independent nail-art brand concept • Client identity undisclosed • Location not yet verified</span>
           </div>
         </div>
 

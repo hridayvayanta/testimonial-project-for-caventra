@@ -60,7 +60,7 @@ export default function About({ onOpenBooking }) {
               >
                 <img
                   src={about.portraitImage}
-                  alt="Sailee — Bespoke Nail Artist"
+                  alt="Gloss Atelier — Bespoke Nail Artistry"
                   loading="lazy"
                 />
 

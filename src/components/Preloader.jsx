@@ -8,8 +8,8 @@ export default function Preloader({ onComplete }) {
   const subtitleRef = useRef(null);
   const orbRef = useRef(null);
 
-  const wordOne = "Nails by".split("");
-  const wordTwo = "Sailee".split("");
+  const wordOne = "Gloss".split("");
+  const wordTwo = "Atelier".split("");
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

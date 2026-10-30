@@ -1,6 +1,8 @@
 /**
  * siteContent.js
- * Central Content Configuration for "Nails by Sailee"
+ * Central Content Configuration for "Gloss Atelier"
+ * Project Name: Gloss Atelier — Premium Nail Art Website Concept
+ * Client / Company: Independent nail-art brand concept. Client identity undisclosed. Location not yet verified.
  * Project by CAVENTRA — "Ideas to Impact."
  *
  * NOTE FOR CLIENT / HANDOFF:
@@ -12,8 +14,9 @@
 
 export const siteContent = {
   brand: {
-    name: "Nails by Sailee",
-    shortName: "Sailee",
+    name: "Gloss Atelier",
+    shortName: "Gloss Atelier",
+    projectName: "Gloss Atelier — Premium Nail Art Website Concept",
     studioTitle: "Bespoke Nail Artistry & Sculptural Aesthetics",
     tagline: "Beauty, in every detail.",
     alternativeTagline: "A little art. At your fingertips.",
@@ -24,16 +27,16 @@ export const siteContent = {
   },
 
   contact: {
-    // Leave empty or set to test number. If empty, the booking system activates
-    // a beautiful interactive Preview & Copy mode with one-click clipboard copy.
-    whatsappNumber: "", // e.g. "919876543210" (when verified)
-    instagramUrl: "https://instagram.com/nailsbysailee",
-    instagramHandle: "@nailsbysailee",
-    email: "enquire@nailsbysailee.concept",
-    location: "Bespoke Studio • By Appointment Only",
-    locationCity: "Mumbai, India",
+    // Leave empty or set to verified WhatsApp number upon onboarding
+    whatsappNumber: "", 
+    instagramUrl: "https://instagram.com/glossatelier.concept",
+    instagramHandle: "@glossatelier",
+    email: "enquire@glossatelier.concept",
+    location: "Independent Brand Concept • Location Not Yet Verified",
+    locationCity: "Client Identity Undisclosed • Location Pending",
     isLocationVerified: false,
-    hours: "Tuesday – Sunday • 10:00 AM – 7:00 PM (By Reservation)",
+    clientDisclosure: "Independent nail-art brand concept. Client identity undisclosed. Location not yet verified.",
+    hours: "By Private Reservation Only • Schedule Pending Verification",
   },
 
   navigation: [
@@ -53,7 +56,7 @@ export const siteContent = {
     tag: "THE PHILOSOPHY",
     headline: "Little details. Lasting impressions.",
     leadParagraph:
-      "Nails are not an afterthought; they are the most personal canvas you carry into every room. At Nails by Sailee, every set begins with an intimate appreciation for proportion, subtle light, and natural contours.",
+      "Nails are not an afterthought; they are the most personal canvas you carry into every room. At Gloss Atelier, every set begins with an intimate appreciation for proportion, subtle light, and natural contours.",
     bodyParagraph:
       "From soft, milky glazed finishes to intricate hand-painted micro-florals and sculptural 3D chrome accents, our work bridges couture editorial beauty and wearable everyday luxury.",
     stats: [
@@ -252,21 +255,21 @@ export const siteContent = {
     ],
   },
 
-  // Section 07: Meet Sailee
+  // Section 07: Lead Artist & Atelier Concept
   about: {
     sectionNum: "05",
-    tag: "THE ARTIST",
+    tag: "THE ATELIER",
     headline: "Behind every detail is a personal touch.",
-    name: "Sailee",
-    title: "Founder & Bespoke Nail Artist",
+    name: "The Lead Artist",
+    title: "Founder & Bespoke Nail Artist • Client Identity Undisclosed",
     isPlaceholder: true,
     portraitImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
     biography: [
-      "Welcome to Nails by Sailee. For me, nail artistry is the intersection of architecture, jewelry, and meditative fine art. Every client who sits in my chair receives an unhurried experience designed around quiet luxury and meticulous care.",
-      "Trained in modern European dry manicure techniques and Japanese gel sculpting, my philosophy favors understated elegance over noisy trends — crafting hands that look radiant, polished, and effortlessly elevated.",
+      "Welcome to Gloss Atelier. An independent nail-art brand concept created by CAVENTRA. Here, nail artistry is celebrated as the intersection of architecture, jewelry, and meditative fine art.",
+      "Trained in modern European dry manicure techniques and Japanese gel sculpting, our philosophy favors understated elegance over noisy trends — crafting hands that look radiant, polished, and effortlessly elevated. Client identity and official artist biography remain undisclosed pending formal onboarding.",
     ],
     quote: "“Your hands speak before you utter a single word. Let them tell a story of elegance and quiet grace.”",
-    signatureNote: "— Sailee",
+    signatureNote: "— Gloss Atelier",
   },
 
   // Section 08: Client Experiences
@@ -287,13 +290,13 @@ export const siteContent = {
       {
         client: "Private Client Reflection",
         occasion: "Custom 3D Art Set",
-        text: "Sailee treats each fingertip like a miniature sculpture. The subtle liquid gold details caught the light in every photograph during Paris Fashion Week.",
+        text: "Gloss Atelier treats each fingertip like a miniature sculpture. The subtle liquid gold details caught the light in every photograph during Paris Fashion Week.",
         tag: "Editorial Set",
       },
       {
         client: "Private Client Reflection",
         occasion: "Monthly Signature Care",
-        text: "Finally, a nail artist who understands delicate restraint. My natural nails have grown significantly healthier since switching to her dry manicure technique.",
+        text: "Finally, a nail artist who understands delicate restraint. My natural nails have grown significantly healthier since switching to this dry manicure technique.",
         tag: "Signature Care",
       },
     ],
@@ -324,6 +327,6 @@ export const siteContent = {
   // Handoff & Concept Disclosure Checklist
   handoffNotice: {
     isConcept: true,
-    message: "This website is a bespoke concept preview designed & built by CAVENTRA. All stock imagery and demonstration categories are illustrative placeholders ready for immediate substitution upon client onboarding.",
+    message: "Gloss Atelier is an independent nail-art brand concept designed & built by CAVENTRA. Client identity undisclosed. Location not yet verified.",
   },
 };
