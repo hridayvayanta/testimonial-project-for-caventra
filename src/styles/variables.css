@@ -1,0 +1,82 @@
+:root {
+  /* Brand Color Palette */
+  --color-porcelain: #FBF8F4;      /* Primary background */
+  --color-soft-blush: #F0E4DF;     /* Secondary background */
+  --color-dusty-rose: #D9B5AE;     /* Accent */
+  --color-muted-rose: #B98D82;     /* Secondary accent */
+  --color-deep-espresso: #413531;  /* Primary text */
+
+  /* Neutral & Translucent Tones */
+  --color-espresso-80: rgba(65, 53, 49, 0.82);
+  --color-espresso-60: rgba(65, 53, 49, 0.62);
+  --color-espresso-40: rgba(65, 53, 49, 0.40);
+  --color-espresso-15: rgba(65, 53, 49, 0.15);
+  --color-espresso-08: rgba(65, 53, 49, 0.08);
+
+  --color-rose-glow: rgba(217, 181, 174, 0.35);
+  --color-blush-glass: rgba(240, 228, 223, 0.80);
+  --color-porcelain-glass: rgba(251, 248, 244, 0.88);
+  --color-border-subtle: rgba(185, 141, 130, 0.22);
+  --color-border-delicate: rgba(65, 53, 49, 0.10);
+
+  --color-pearl-white: #FFFFFF;
+  --color-champagne-shimmer: #F5EDE6;
+  --color-gold-accent: #C9A982;
+
+  /* Typography Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Fluid Typography Scale */
+  --text-hero: clamp(3.2rem, 8.5vw, 8rem);
+  --text-h1: clamp(2.5rem, 5.5vw, 5.2rem);
+  --text-h2: clamp(2rem, 4vw, 3.8rem);
+  --text-h3: clamp(1.4rem, 2.5vw, 2.4rem);
+  --text-h4: clamp(1.15rem, 1.8vw, 1.6rem);
+  --text-body-lg: clamp(1.05rem, 1.2vw, 1.25rem);
+  --text-body: clamp(0.925rem, 1vw, 1.05rem);
+  --text-caption: clamp(0.75rem, 0.8vw, 0.85rem);
+  --text-label: 0.725rem;
+
+  /* Spacing System */
+  --space-unit: 8px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 140px;
+  --space-section: clamp(80px, 12vw, 180px);
+
+  /* Container & Max Widths */
+  --container-max: 1400px;
+  --container-narrow: 1080px;
+  --container-pad: clamp(1.5rem, 5vw, 4rem);
+
+  /* Transitions & Radii */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: 0.25s var(--ease-soft);
+  --transition-medium: 0.5s var(--ease-editorial);
+  --transition-slow: 0.9s var(--ease-editorial);
+
+  --radius-subtle: 2px;
+  --radius-card: 6px;
+  --radius-pill: 999px;
+
+  /* Elevation Shadows */
+  --shadow-subtle: 0 4px 20px -2px rgba(65, 53, 49, 0.05);
+  --shadow-card: 0 12px 36px -4px rgba(65, 53, 49, 0.07);
+  --shadow-floating: 0 24px 60px -8px rgba(65, 53, 49, 0.12);
+  --shadow-pearl: 0 10px 40px -5px rgba(217, 181, 174, 0.35);
+
+  /* Z-Index Hierarchy */
+  --z-bg: 0;
+  --z-canvas: 1;
+  --z-content: 2;
+  --z-overlay: 10;
+  --z-nav: 50;
+  --z-modal: 100;
+  --z-preloader: 200;
+}
