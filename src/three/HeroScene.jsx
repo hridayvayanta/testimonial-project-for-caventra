@@ -30,15 +30,15 @@ export default function HeroScene() {
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0xFBF8F4, 0.025);
+    scene.fog = new THREE.FogExp2(0xFBF8F4, 0.035);
 
     const camera = new THREE.PerspectiveCamera(
-      38,
+      40,
       container.clientWidth / container.clientHeight,
       0.1,
       100
     );
-    camera.position.set(0, 0, 8.2);
+    camera.position.set(0, 0, 7.4);
 
     let renderer;
     try {
@@ -56,259 +56,124 @@ export default function HeroScene() {
     renderer.setPixelRatio(dpr);
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
+    renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
 
-    // Studio Lighting for Cosmetics & Glass
-    const ambientLight = new THREE.AmbientLight(0xFBF8F4, 1.4);
+    // Studio Lighting
+    const ambientLight = new THREE.AmbientLight(0xFBF8F4, 1.3);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xFFF9F5, 3.2);
-    keyLight.position.set(6, 7, 5);
+    const keyLight = new THREE.DirectionalLight(0xFFF8F2, 3.2);
+    keyLight.position.set(5, 6, 5);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xF0E4DF, 2.2);
+    const fillLight = new THREE.DirectionalLight(0xF0E4DF, 2.0);
     fillLight.position.set(-6, -2, 4);
     scene.add(fillLight);
 
-    const rimLight = new THREE.PointLight(0xB98D82, 3.6, 16);
-    rimLight.position.set(2, 4, -4);
+    const rimLight = new THREE.PointLight(0xB98D82, 3.8, 18);
+    rimLight.position.set(2, 5, -5);
     scene.add(rimLight);
 
-    const bottomGlow = new THREE.PointLight(0xD9B5AE, 2.6, 12);
-    bottomGlow.position.set(-2, -3, 2);
+    const bottomGlow = new THREE.PointLight(0xD9B5AE, 2.4, 12);
+    bottomGlow.position.set(-2, -4, 2);
     scene.add(bottomGlow);
 
-    // Master 3D Group
+    // Master Sculptural Composition
     const masterGroup = new THREE.Group();
     scene.add(masterGroup);
 
-    // Base responsive positioning
-    let basePosX = window.innerWidth >= 992 ? 1.6 : 0;
-    let basePosY = window.innerWidth >= 992 ? -0.1 : 0.4;
-    let baseScale = window.innerWidth >= 992 ? 1.0 : 0.75;
+    // Responsive Base Positioning:
+    // On desktop, offset to the right (+1.75) so headline text on left has breathing room!
+    // On mobile, center (0) and lift slightly (-0.4) so it crowns the mobile viewport.
+    let basePosX = window.innerWidth >= 992 ? 1.75 : 0;
+    let basePosY = window.innerWidth >= 992 ? 0.1 : 0.6;
+    let baseScale = window.innerWidth >= 992 ? 1.05 : 0.72;
 
     masterGroup.position.set(basePosX, basePosY, 0);
     masterGroup.scale.setScalar(baseScale);
 
-    // ==========================================
-    // 1. REALISTIC LUXURY 3D NAIL POLISH BOTTLE
-    // ==========================================
-    const bottleGroup = new THREE.Group();
-    masterGroup.add(bottleGroup);
-
-    // Outer Heavy Glass Bottle Body
-    const outerGlassGeom = new THREE.BoxGeometry(1.2, 1.4, 1.2);
+    // 1. Central Translucent Liquid Glass Ribbon (Smooth TorusKnot)
+    const ribbonGeom = new THREE.TorusKnotGeometry(1.55, 0.36, 180, 32, 2, 3);
     const glassMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(0xFFFFFF),
-      transmission: 0.94,
+      transmission: 0.90,
       opacity: 1,
       transparent: true,
-      roughness: 0.05,
-      ior: 1.52, // Cosmetic flint glass index
-      thickness: 1.6,
+      roughness: 0.1,
+      ior: 1.48,
+      thickness: 1.9,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.04,
+      clearcoatRoughness: 0.06,
+      attenuationColor: new THREE.Color(0xF0E4DF),
+      attenuationDistance: 2.4,
+      sheen: 0.7,
+      sheenColor: new THREE.Color(0xD9B5AE),
       specularIntensity: 1.3,
     });
-    const outerGlass = new THREE.Mesh(outerGlassGeom, glassMaterial);
-    outerGlass.position.y = 0;
-    bottleGroup.add(outerGlass);
+    const mainRibbon = new THREE.Mesh(ribbonGeom, glassMaterial);
+    masterGroup.add(mainRibbon);
 
-    // Internal Glossy Blush Nail Lacquer Core
-    const innerLacquerGeom = new THREE.BoxGeometry(0.92, 1.15, 0.92);
-    const lacquerMaterial = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0xD9B5AE), // Soft dusty rose lacquer
-      roughness: 0.08,
-      metalness: 0.05,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.03,
-      sheen: 0.8,
-      sheenColor: new THREE.Color(0xF0E4DF),
-    });
-    const innerLacquer = new THREE.Mesh(innerLacquerGeom, lacquerMaterial);
-    innerLacquer.position.y = -0.08;
-    bottleGroup.add(innerLacquer);
-
-    // Gold Neck Collar
-    const neckGeom = new THREE.CylinderGeometry(0.32, 0.32, 0.3, 32);
-    const goldMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(0xC9A982),
-      metalness: 0.85,
-      roughness: 0.18,
-    });
-    const neck = new THREE.Mesh(neckGeom, goldMaterial);
-    neck.position.y = 0.85;
-    bottleGroup.add(neck);
-
-    // Deep Espresso Architectural Cap
-    const capGeom = new THREE.CylinderGeometry(0.38, 0.38, 1.3, 32);
-    const capMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(0x413531),
-      roughness: 0.22,
-      metalness: 0.15,
-    });
-    const cap = new THREE.Mesh(capGeom, capMaterial);
-    cap.position.y = 1.6;
-    bottleGroup.add(cap);
-
-    // Fine Gold Cap Trim Ring
-    const trimGeom = new THREE.TorusGeometry(0.385, 0.02, 16, 32);
-    const trimRing = new THREE.Mesh(trimGeom, goldMaterial);
-    trimRing.rotation.x = Math.PI / 2;
-    trimRing.position.y = 1.0;
-    bottleGroup.add(trimRing);
-
-    // Tilt bottle for dynamic beauty campaign editorial angle
-    bottleGroup.rotation.z = -0.18;
-    bottleGroup.rotation.y = 0.35;
-    bottleGroup.rotation.x = 0.12;
-    bottleGroup.position.set(0.6, -0.4, 0);
-
-    // ==========================================
-    // 2. GLOSSY LIQUID LACQUER SWEEP RIBBON
-    // ==========================================
-    // A fluid ribbon of wet blush lacquer sweeping gracefully across the scene
-    const ribbonCurve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-2.8, -1.8, -0.6),
-      new THREE.Vector3(-1.6, 0.8, 0.4),
-      new THREE.Vector3(0.2, 1.4, 0.8),
-      new THREE.Vector3(1.8, 0.2, 0.2),
-      new THREE.Vector3(2.6, -1.2, -0.4),
-      new THREE.Vector3(3.2, 0.6, -1.0),
-    ]);
-    const ribbonGeom = new THREE.TubeGeometry(ribbonCurve, 140, 0.09, 20, false);
-    const ribbonMaterial = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0xD9B5AE),
-      roughness: 0.06,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.02,
-      transmission: 0.25,
-      transparent: true,
-      opacity: 0.95,
-      sheen: 0.9,
-      sheenColor: new THREE.Color(0xFBF8F4),
-    });
-    const lacquerRibbon = new THREE.Mesh(ribbonGeom, ribbonMaterial);
-    masterGroup.add(lacquerRibbon);
-
-    // Second delicate pearlescent lacquer thread
-    const accentCurve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-2.2, 1.6, -0.8),
-      new THREE.Vector3(-0.8, -0.6, 0.6),
-      new THREE.Vector3(1.2, -1.6, 0.4),
-      new THREE.Vector3(2.4, -0.2, 0.8),
-    ]);
-    const accentGeom = new THREE.TubeGeometry(accentCurve, 100, 0.045, 16, false);
-    const accentMaterial = new THREE.MeshPhysicalMaterial({
+    // 2. Intertwined Pearlescent Soft-Rose Accent Ribbon
+    const accentGeom = new THREE.TorusKnotGeometry(1.3, 0.15, 140, 24, 3, 4);
+    const pearlAccentMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(0xFBF8F4),
-      metalness: 0.2,
-      roughness: 0.12,
+      metalness: 0.3,
+      roughness: 0.16,
       clearcoat: 1.0,
-      iridescence: 0.95,
+      clearcoatRoughness: 0.08,
+      iridescence: 0.92,
       iridescenceIOR: 1.35,
+      sheen: 0.85,
+      sheenColor: new THREE.Color(0xB98D82),
     });
-    const accentRibbon = new THREE.Mesh(accentGeom, accentMaterial);
+    const accentRibbon = new THREE.Mesh(accentGeom, pearlAccentMaterial);
+    accentRibbon.rotation.x = Math.PI / 3;
     masterGroup.add(accentRibbon);
 
-    // ==========================================
-    // 3. FLOATING COSMETIC NAIL SWATCHES & DROPS
-    // ==========================================
-    const swatchGroup = new THREE.Group();
-    masterGroup.add(swatchGroup);
+    // 3. Floating Pearlescent Orbs & Liquid Gel Droplets
+    const sphereGroup = new THREE.Group();
+    masterGroup.add(sphereGroup);
 
-    // Almond Nail Swatch Disc Shape
-    const swatchGeom = new THREE.CylinderGeometry(0.22, 0.18, 0.55, 32);
-    swatchGeom.rotateX(Math.PI / 2);
-
-    const swatches = [
-      // 1. Glazed Porcelain Pearl Swatch
-      {
-        mesh: new THREE.Mesh(
-          swatchGeom,
-          new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(0xFBF8F4),
-            metalness: 0.15,
-            roughness: 0.08,
-            clearcoat: 1.0,
-            iridescence: 0.9,
-          })
-        ),
-        pos: [-1.9, 1.2, 0.6],
-        rot: [0.3, 0.5, -0.2],
-        speed: 1.1,
-        offset: 0,
-      },
-      // 2. Dusty Rose Lacquer Swatch
-      {
-        mesh: new THREE.Mesh(
-          swatchGeom,
-          new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(0xD9B5AE),
-            roughness: 0.06,
-            clearcoat: 1.0,
-            sheen: 0.8,
-          })
-        ),
-        pos: [2.2, 1.5, 0.2],
-        rot: [-0.4, -0.3, 0.4],
-        speed: 0.9,
-        offset: 1.8,
-      },
-      // 3. Muted Rose Quartz Swatch
-      {
-        mesh: new THREE.Mesh(
-          swatchGeom,
-          new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(0xB98D82),
-            roughness: 0.08,
-            clearcoat: 1.0,
-          })
-        ),
-        pos: [-1.6, -1.6, 0.8],
-        rot: [0.2, 0.6, 0.5],
-        speed: 1.3,
-        offset: 3.2,
-      },
-      // 4. Liquid Gold Accent Droplet
-      {
-        mesh: new THREE.Mesh(
-          new THREE.SphereGeometry(0.14, 32, 32),
-          new THREE.MeshStandardMaterial({
-            color: new THREE.Color(0xC9A982),
-            metalness: 0.9,
-            roughness: 0.15,
-          })
-        ),
-        pos: [2.0, -1.4, 0.5],
-        rot: [0, 0, 0],
-        speed: 1.5,
-        offset: 4.5,
-      },
-      // 5. Hanging Wet Polish Drop (near wand/bottle)
-      {
-        mesh: new THREE.Mesh(
-          new THREE.SphereGeometry(0.11, 32, 32),
-          new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(0xD9B5AE),
-            roughness: 0.05,
-            clearcoat: 1.0,
-          })
-        ),
-        pos: [0.1, -1.3, 0.4],
-        rot: [0, 0, 0],
-        speed: 1.8,
-        offset: 2.1,
-      },
-    ];
-
-    swatches.forEach((s) => {
-      s.mesh.position.set(...s.pos);
-      s.mesh.rotation.set(...s.rot);
-      swatchGroup.add(s.mesh);
+    const sphereGeom = new THREE.SphereGeometry(1, 48, 48);
+    const pearlMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(0xFBF8F4),
+      metalness: 0.15,
+      roughness: 0.14,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.05,
+      iridescence: 0.98,
+      iridescenceIOR: 1.4,
+      sheen: 0.75,
+      sheenColor: new THREE.Color(0xD9B5AE),
     });
 
-    // Mouse Parallax with smooth lerp
+    const liquidDropMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(0xD9B5AE),
+      metalness: 0.55,
+      roughness: 0.1,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.05,
+      transmission: 0.35,
+      transparent: true,
+      opacity: 0.92,
+    });
+
+    const spheres = [
+      { mesh: new THREE.Mesh(sphereGeom, pearlMaterial), scale: 0.36, pos: [-2.1, 1.4, 0.5], speed: 1.2, offset: 0 },
+      { mesh: new THREE.Mesh(sphereGeom, pearlMaterial), scale: 0.25, pos: [2.2, -1.2, 0.7], speed: 0.9, offset: 1.5 },
+      { mesh: new THREE.Mesh(sphereGeom, liquidDropMaterial), scale: 0.20, pos: [-1.7, -1.7, 0.8], speed: 1.4, offset: 2.8 },
+      { mesh: new THREE.Mesh(sphereGeom, pearlMaterial), scale: 0.15, pos: [1.9, 1.7, -0.4], speed: 1.1, offset: 4.1 },
+      { mesh: new THREE.Mesh(sphereGeom, liquidDropMaterial), scale: 0.13, pos: [0.3, 2.3, 0.2], speed: 1.6, offset: 5.2 },
+    ];
+
+    spheres.forEach((s) => {
+      s.mesh.scale.setScalar(s.scale);
+      s.mesh.position.set(...s.pos);
+      sphereGroup.add(s.mesh);
+    });
+
+    // Mouse Parallax (Smooth Lerp)
     let targetMouseX = 0;
     let targetMouseY = 0;
     let currentMouseX = 0;
@@ -325,7 +190,7 @@ export default function HeroScene() {
       window.addEventListener('pointermove', handlePointerMove, { passive: true });
     }
 
-    // Scroll-Linked Choreography via GSAP ScrollTrigger
+    // Scroll-Linked Camera & Sculpture Transformation
     let scrollTriggerInstance;
     const heroSection = document.getElementById('hero');
 
@@ -338,31 +203,27 @@ export default function HeroScene() {
         onUpdate: (self) => {
           const progress = self.progress;
 
-          // Bottle glides subtly aside and rotates
-          bottleGroup.position.x = 0.6 + progress * 2.0;
-          bottleGroup.position.y = -0.4 - progress * 1.5;
-          bottleGroup.rotation.y = 0.35 + progress * 1.5;
-          bottleGroup.rotation.z = -0.18 + progress * 0.8;
+          // Cinematic transformation on scroll:
+          // Moves further right and scales down into section 3
+          masterGroup.position.x = basePosX + progress * 2.2;
+          masterGroup.position.y = basePosY - progress * 1.4;
+          masterGroup.position.z = -progress * 1.8;
+          masterGroup.rotation.y = progress * 2.8;
+          masterGroup.rotation.x = progress * 1.4;
+          masterGroup.scale.setScalar(baseScale * (1 - progress * 0.45));
 
-          // Lacquer ribbon expands and moves across
-          lacquerRibbon.position.x = progress * 1.8;
-          lacquerRibbon.rotation.z = progress * 0.8;
+          // Camera glide
+          camera.position.z = 7.4 - progress * 1.4;
 
-          // Swatches disperse gently into next section
-          swatches.forEach((s, idx) => {
-            s.mesh.position.y = s.pos[1] - progress * (1.5 + idx * 0.3);
-            s.mesh.position.z = s.pos[2] - progress * 1.2;
-          });
-
-          // Soft canvas fade out entering section 3
+          // Graceful fade out as it enters Brand Story
           if (renderer.domElement) {
-            renderer.domElement.style.opacity = Math.max(0, 1 - progress * 1.4);
+            renderer.domElement.style.opacity = Math.max(0, 1 - progress * 1.3);
           }
         },
       });
     }
 
-    // Visibility Observer
+    // Visibility Observer to pause rendering when hero is offscreen
     let isVisible = true;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -391,26 +252,29 @@ export default function HeroScene() {
       const elapsedTime = clock.getElapsedTime();
 
       if (!prefersReducedMotion) {
-        // Subtle floating sway on nail polish bottle
-        bottleGroup.position.y = -0.4 + Math.sin(elapsedTime * 0.9) * 0.06;
-        bottleGroup.rotation.y = 0.35 + Math.sin(elapsedTime * 0.6) * 0.08;
+        // Continuous slow organic rotation
+        mainRibbon.rotation.x = elapsedTime * 0.12;
+        mainRibbon.rotation.y = elapsedTime * 0.16;
 
-        // Wave motion on lacquer ribbons
-        lacquerRibbon.rotation.z = Math.sin(elapsedTime * 0.4) * 0.05;
-        accentRibbon.rotation.x = Math.cos(elapsedTime * 0.5) * 0.06;
+        accentRibbon.rotation.y = -elapsedTime * 0.14;
+        accentRibbon.rotation.z = elapsedTime * 0.1;
 
-        // Floating nail swatches in harmonic orbit
-        swatches.forEach((s) => {
-          s.mesh.position.y = s.pos[1] + Math.sin(elapsedTime * s.speed + s.offset) * 0.12;
-          s.mesh.rotation.y = s.rot[1] + Math.sin(elapsedTime * 0.8 + s.offset) * 0.2;
+        // Gentle floating vertical sine wave
+        const floatOffset = Math.sin(elapsedTime * 0.8) * 0.08;
+        masterGroup.position.y = basePosY + floatOffset;
+
+        // Spheres orbiting in harmonic sine/cosine curves
+        spheres.forEach((s) => {
+          s.mesh.position.y = s.pos[1] + Math.sin(elapsedTime * s.speed + s.offset) * 0.16;
+          s.mesh.position.x = s.pos[0] + Math.cos(elapsedTime * (s.speed * 0.7) + s.offset) * 0.11;
         });
 
-        // Mouse Parallax with smooth damping
+        // Mouse Parallax with soft damping
         currentMouseX += (targetMouseX - currentMouseX) * 0.05;
         currentMouseY += (targetMouseY - currentMouseY) * 0.05;
 
-        masterGroup.rotation.x = currentMouseY * 0.12;
-        masterGroup.rotation.y = currentMouseX * 0.16;
+        masterGroup.rotation.x = currentMouseY * 0.18;
+        masterGroup.rotation.y = currentMouseX * 0.25;
       }
 
       renderer.render(scene, camera);
@@ -426,20 +290,20 @@ export default function HeroScene() {
       camera.aspect = width / height;
 
       if (width >= 992) {
-        basePosX = 1.4;
-        basePosY = -0.1;
-        baseScale = 1.0;
-        camera.position.z = 8.2;
-      } else if (width >= 768) {
-        basePosX = 0.8;
+        basePosX = 1.75;
         basePosY = 0.1;
+        baseScale = 1.05;
+        camera.position.z = 7.4;
+      } else if (width >= 768) {
+        basePosX = 1.0;
+        basePosY = 0.2;
         baseScale = 0.85;
-        camera.position.z = 8.8;
+        camera.position.z = 7.8;
       } else {
-        basePosX = 0.2;
-        basePosY = 0.5;
-        baseScale = 0.72;
-        camera.position.z = 9.4;
+        basePosX = 0;
+        basePosY = 0.6;
+        baseScale = 0.70;
+        camera.position.z = 8.6;
       }
 
       masterGroup.position.set(basePosX, basePosY, 0);
@@ -465,20 +329,13 @@ export default function HeroScene() {
         scrollTriggerInstance.kill();
       }
 
-      outerGlassGeom.dispose();
-      glassMaterial.dispose();
-      innerLacquerGeom.dispose();
-      lacquerMaterial.dispose();
-      neckGeom.dispose();
-      goldMaterial.dispose();
-      capGeom.dispose();
-      capMaterial.dispose();
-      trimGeom.dispose();
       ribbonGeom.dispose();
-      ribbonMaterial.dispose();
+      glassMaterial.dispose();
       accentGeom.dispose();
-      accentMaterial.dispose();
-      swatchGeom.dispose();
+      pearlAccentMaterial.dispose();
+      sphereGeom.dispose();
+      pearlMaterial.dispose();
+      liquidDropMaterial.dispose();
 
       if (renderer) {
         renderer.dispose();
@@ -499,7 +356,7 @@ export default function HeroScene() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 2,
+        zIndex: 1,
         pointerEvents: 'none',
         overflow: 'hidden',
       }}
