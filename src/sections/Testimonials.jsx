@@ -34,7 +34,7 @@ export default function Testimonials() {
           italicWord="around you."
           description={testimonials.subtitle}
           align="center"
-          conceptBadge="Verified Reviews Preview"
+          conceptBadge="Demonstration Feedback"
         />
 
         {/* Tasteful Client Feedback Feature Card */}

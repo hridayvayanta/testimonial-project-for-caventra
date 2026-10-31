@@ -116,7 +116,7 @@ export default function Services({ onOpenBooking }) {
                 }}
               >
                 <div style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-dusty-rose)', marginBottom: '4px' }}>
-                  Aesthetic Profile
+                  Service Category
                 </div>
                 <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>
                   {currentCategory.title}
@@ -244,7 +244,7 @@ export default function Services({ onOpenBooking }) {
                     letterSpacing: '0.15em',
                   }}
                 >
-                  <span>Enquire For This Treatment</span>
+                  <span>Enquire About This Service</span>
                   <ArrowRight size={13} />
                 </button>
               </div>

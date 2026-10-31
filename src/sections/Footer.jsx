@@ -47,7 +47,7 @@ export default function Footer({ onOpenBooking }) {
               Gloss Atelier
             </h3>
             <p className="text-body" style={{ color: 'var(--color-espresso-80)', lineHeight: 1.6 }}>
-              {brand.studioTitle}. Dedicated to quiet luxury, structural nail architecture, and unhurried fine craftsmanship.
+              {brand.studioTitle}. Focused on Russian dry manicures, Japanese builder gel, and hand-painted nail art.
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function Footer({ onOpenBooking }) {
           {/* Col 2: Studio Location */}
           <div style={{ gridColumn: 'span 12' }} className="footer-col-studio">
             <div style={{ fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-rose)', fontWeight: 600, marginBottom: '1.25rem' }}>
-              Studio Sanctuary
+              Studio Location
             </div>
             <p className="text-body" style={{ marginBottom: '0.5rem' }}>
               {contact.location}

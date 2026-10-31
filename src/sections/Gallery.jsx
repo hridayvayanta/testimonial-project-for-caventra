@@ -31,7 +31,7 @@ export default function Gallery({ onSelectImage }) {
           headline="A canvas at"
           italicWord="your fingertips."
           description={siteContent.gallery.description}
-          conceptBadge="Curated Concept Works"
+          conceptBadge="Portfolio Preview"
         />
 
         {/* Filter Navigation */}
@@ -215,7 +215,7 @@ export default function Gallery({ onSelectImage }) {
                       backdropFilter: 'blur(4px)',
                     }}
                   >
-                    Concept Set
+                    Concept Preview
                   </div>
                 </div>
               </div>

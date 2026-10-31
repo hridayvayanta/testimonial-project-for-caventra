@@ -130,7 +130,7 @@ export default function Hero({ onOpenBooking }) {
               flexWrap: 'wrap',
             }}
           >
-            <span className="editorial-tag">HAUTE NAIL ARCHITECTURE</span>
+            <span className="editorial-tag">BESPOKE NAIL ARTISTRY</span>
             <span className="concept-badge">
               <span className="concept-badge-dot" />
               Bespoke Concept Preview

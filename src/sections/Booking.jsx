@@ -105,7 +105,7 @@ export default function Booking({ onOpenBooking }) {
               textTransform: 'uppercase',
             }}
           >
-            By Private Appointment Only • Bespoke Consultation
+            By Private Appointment Only • Schedule Confirmed Directly
           </span>
         </div>
 

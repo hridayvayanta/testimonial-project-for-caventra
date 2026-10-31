@@ -73,7 +73,7 @@ export default function BrandStory() {
           tag={siteContent.story.tag}
           headline="Little details."
           italicWord="Lasting impressions."
-          conceptBadge="Editorial Concept"
+          conceptBadge="Studio Overview"
         />
 
         {/* Asymmetrical 2-Column Editorial Grid */}
@@ -141,7 +141,7 @@ export default function BrandStory() {
                     fontWeight: 600,
                   }}
                 >
-                  Quiet Luxury
+                  Studio Standard
                 </div>
                 <p
                   style={{

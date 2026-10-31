@@ -23,7 +23,7 @@ export default function Artistry() {
           headline="Made with patience."
           italicWord="Finished with precision."
           description={siteContent.artistry.description}
-          conceptBadge="Ceremonial Process"
+          conceptBadge="Three-Stage Protocol"
         />
 
         {/* 3-Stage Progress Nav */}

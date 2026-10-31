@@ -28,7 +28,7 @@ export default function BookingModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   // Prepare encoded WhatsApp message
-  const generatedMessage = `Hello Gloss Atelier,\n\nI would love to enquire about reserving a bespoke appointment at Gloss Atelier.\n\n• Name: ${formData.name || '[My Name]'}\n• Desired Service: ${formData.service}\n• Preferred Date: ${formData.date || '[Preferred Date]'}\n• Notes / Aesthetic Vision: ${formData.message || 'Natural nail health and bespoke design'}\n\nLooking forward to your consultation.`;
+  const generatedMessage = `Hello Gloss Atelier,\n\nI would like to enquire about booking an appointment.\n\n• Name: ${formData.name || '[My Name]'}\n• Desired Service: ${formData.service}\n• Preferred Date: ${formData.date || '[Preferred Date]'}\n• Notes / Reference: ${formData.message || 'Natural nail reinforcement and design'}\n\nLooking forward to hearing from you.`;
 
   const handleCopyMessage = () => {
     navigator.clipboard.writeText(generatedMessage);
@@ -118,7 +118,7 @@ export default function BookingModal({ isOpen, onClose }) {
             <span className="editorial-tag">RESERVATION ENQUIRY</span>
           </div>
           <h3 id="booking-title" className="text-h2" style={{ marginBottom: '0.2rem', fontSize: '1.6rem' }}>
-            Begin Your <span className="text-hero-italic">Experience</span>
+            Request an <span className="text-hero-italic">Appointment</span>
           </h3>
           <p className="text-body" style={{ color: 'var(--color-espresso-80)', fontSize: '0.8rem', lineHeight: 1.35 }}>
             {siteContent.booking.notice}
@@ -260,7 +260,7 @@ export default function BookingModal({ isOpen, onClose }) {
                 fontWeight: 500,
               }}
             >
-              Aesthetic Notes & Inspiration (Optional)
+              Design Notes or Reference (Optional)
             </label>
             <div style={{ position: 'relative' }}>
               <textarea
